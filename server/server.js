@@ -5,10 +5,17 @@ const app = express();
 
 const router = require('./routes/router');
 
+const cookieParser = require('cookie-parser');
+
 const PORT = 3000;
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
+
+app.use('/user', router);
+
+
 
 
 //app.use('/api', router);

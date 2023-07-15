@@ -1,5 +1,33 @@
 const db = require('../models/models.js');
 
+const animeController = {
+
+ 
+async userFavorites(req,res,next){
+   
+  try{
+    const getShows= ''
+
+    await db.query
+
+
+
+  }
+  catch(err){
+    return next({
+    log: 'Error occured at animeController.userFavorites' + err,
+    status: 400,
+    message: { err: 'Error when adding to favorites' }})
+    }
+  }
+}
+
+
+
+
+
+
+
 const createErr = (errInfo) => {
     const { method, type, err } = errInfo;
     return {
@@ -11,5 +39,8 @@ const createErr = (errInfo) => {
       },
     };
   };
+
+
+  module.exports = animeController;
 
   
