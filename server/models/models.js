@@ -7,6 +7,8 @@ const pool = new Pool ({
 
 //test query
 
+  
+
 pool.query('SELECT 1')
     .then(() => {
         console.log('Database connected successfully');
@@ -23,6 +25,7 @@ pool.query('SELECT 1')
 
 module.exports = {
     query: (text, params, callback) => {
+        console.log('executed query', text);
         return pool.query(text, params, callback);
     },
 };
