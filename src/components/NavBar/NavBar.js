@@ -27,7 +27,7 @@ export default function SimpleBottomNavigation() {
         <BottomNavigationAction
          label="Trending" 
          icon={<WhatshotIcon />}
-         onClick={() => handleNavigation('/')}
+         onClick={() => handleNavigation('/trending')}
           />
         <BottomNavigationAction
          label="Search" 

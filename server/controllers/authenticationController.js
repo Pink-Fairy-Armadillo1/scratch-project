@@ -24,26 +24,28 @@ authenticationController.userLogin = async (req, res, next) => {
         const checkUserResult = await db.query(checkUserQuery, [username]);
         //check if user exists
         if (checkUserResult.rows.length === 0) {
-            return res.redirect('/signup');
-        }
+            res.status(400).json({ redirect: '/signup' });;
+        };
         const user = checkUserResult.rows[0];
         //compare input password with stored hashed password 
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (passwordMatch) {
-            res.redirect('/home');
+            // res.redirect('/trending');
+            console.log('pass');
+            // return res.redirect('/trending');
+            res.status(200).json({ redirect: '/trending' });;
+            
         } else {
-            res.redirect('/login');
+            res.status(400).json({ redirect: '/login' });
         }
-    }
-    catch (err) {
+    } catch (err) {
         return next(
             createErr({
             method: 'userLogin',
             type: 'login process',
             err
-        }
-        ))
+        }))
     }
 };
 
@@ -55,13 +57,13 @@ authenticationController.userSignup = async (req, res, next) => {
         const checkUserQuery = 'SELECT * FROM users WHERE username = $1';
         const checkUserResult = await db.query(checkUserQuery, [username]);
         if (checkUserResult.rows.length > 0) {
-            return res.redirect('/login');
+            res.status(400).json({ redirect: '/login' });
         }
 
         const insertUserQuery = 'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id';
         const insertUserResult = await db.query(insertUserQuery, [username, hashedPassword]);
 
-        return res.redirect('/login');
+        res.status(200).json({ redirect: '/login' });;
     }
     catch (err) {
         return next(

@@ -15,16 +15,11 @@ router.post('/signup', authenticationController.userSignup, (req, res) => {
     res.status(200).json({ message: 'User created successfully' });
 });
 
-// router.post('/', animeController.createUser,(req,res)=>{
-//     res.status(200).json({
-//         message: console.log(created),
-//     })
-// })
-router.post('/:id/favorites', animeController.userFavorites, (req, res)=> {
+router.post('/:mal_id/favorites', animeController.userFavorites, (req, res)=> {
     res.status(200).json({
         message: console.log('created')
     })
-})
+});
 
 
 

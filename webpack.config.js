@@ -36,14 +36,16 @@ module.exports = {
     ]
    },
    devServer:{
+    host: '127.0.0.1',
+    port: 8080,
+    hot: true,
+    open: true,
+    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, 'build'),
     },
     proxy: {
-      '/api' : 'http://localhost/3000',
+      '/': 'http://localhost:3000',
     },
-    hot: true,
-    historyApiFallback: true,
    }
-
 }

@@ -1,14 +1,40 @@
 import * as React from 'react'
 // import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
+// import TextField from '@mui/material/TextField';
 // import { useFormControl } from '@mui/material/FormControl';
-import { Grid, Paper, TextField, Button} from '@material-ui/core'
+import { Grid, Paper, TextField, Button, Avatar } from '@mui/material'
 import LockIcon from '@mui/icons-material/Lock';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 
-const SignUp = () => {
+const SignUp = async () => {
+    try{
+        const res = await fetch('/signup',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 
+                'application/json',
+            },
+            body:JSON.stringify({
+                username, password
+            })
+        });
+        if(res.status === 200){
+            const data = await res.json();
+            const redirectUrl = data.redirect;
+            navigate(redirectUrl);
+        } else{
+            console.log('Signup failed')
+        }
+
+
+    } catch(err){
+        console.error('Error occurred during signup:', err);
+
+    }
+    
     
     
 const paperStyle={padding: 20, heigth: '70vh', width: 280, margin: "20px auto"}
@@ -48,4 +74,4 @@ const btnStyle={margin: '8px 0'}
   )
 }
 
-export default Login
+export default SignUp
