@@ -16,10 +16,10 @@ import SignUp from '../SignUp/SignUp'
 //     path: '/trending',
 //     element: <Trending />
 //   },
-//   // {
-//   //   path: '/signup',
-//   //   element: <SignUp/>
-//   // },
+//   {
+//     path: '/signup',
+//     element: <SignUp/>
+//   },
 //   // {
 //   //   path: '/login',
 //   //   element: <Login/>
@@ -43,7 +43,7 @@ const App = () => {
     <div className="app">
       <Routes>
         <Route path='/' element={<Login />}/>
-        {/* <Route path='/signup' element={<SignUp />}/> */}
+        <Route path='/signup' element={<SignUp />}/>
 
         {/* <Route path='/' element={<SignUp/>}/> */}
         {/* <Route path='/Genre' element={<Genre />}/>
@@ -54,17 +54,15 @@ const App = () => {
       {/* {!isHidden && <SimpleBottomNavigation />} */}
      </div>
      </ BrowserRouter>
+ 
     // <div className="app">
-      // {/* <Routes>
-      //   <Route path="/" element={<Login />} />
-      //   <Route path="/trending" element={<Trending />} />
-      // </Routes>
-      // {!isHidden && <SimpleBottomNavigation />} */}
+    //    <Routes> 
+    //     <Route path="/" element={<Login />} />
+    //     <Route path="/trending" element={<Trending />} />
+    //   </Routes>
+    //   {!isHidden && <SimpleBottomNavigation />} 
     // </div>
-    // <div className="app">
-    //   {routing}
-    //   {!isHidden && <SimpleBottomNavigation />}
-    // </div>
+ 
   )
 };
 

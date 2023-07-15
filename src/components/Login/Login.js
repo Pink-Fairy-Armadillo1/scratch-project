@@ -95,7 +95,7 @@ const btnStyle={margin: '8px 0'}
                 {/* {!isLoginPage && ( */}
                 <Typography>
                      Do you have an account
-                     <Link href='/#'> Sign Up </Link>
+                     <Link href='/signup' to={redirectUrl}> Sign Up </Link>
                 </Typography>  
                 {/* )} */}
 
