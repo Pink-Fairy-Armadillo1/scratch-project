@@ -12,13 +12,10 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
+app.use(cookieParser());
 
-app.use('/user', router);
+app.use('/', router);
 
-
-
-
-//app.use('/api', router);
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'src', 'index.html'));

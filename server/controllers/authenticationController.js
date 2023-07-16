@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-//const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const db = require('../models/models.js');
 
 const authenticationController = {};
@@ -16,6 +16,13 @@ const createErr = (errInfo) => {
     };
   };
 
+  const secretKey = 'a2ZthjPpKi79jLOk41jkUP4BduEsIqq3';
+
+  //generate a JWT token for the user 
+  const generateAuthToken = (userId) => {
+    return jwt.sign({ userId }, secretKey, { expiresIn: '1h' });
+  };
+
 authenticationController.userLogin = async (req, res, next) => {
     try {
         const { username, password } = req.body;
@@ -24,26 +31,30 @@ authenticationController.userLogin = async (req, res, next) => {
         const checkUserResult = await db.query(checkUserQuery, [username]);
         //check if user exists
         if (checkUserResult.rows.length === 0) {
-            return res.redirect('/signup');
-        }
+            res.status(400).json({ redirect: '/signup' });;
+            return;
+        };
         const user = checkUserResult.rows[0];
         //compare input password with stored hashed password 
         const passwordMatch = await bcrypt.compare(password, user.password);
 
         if (passwordMatch) {
-            res.redirect('/home');
+            // res.redirect('/trending');
+            const token = generateAuthToken(user.id);
+            console.log('pass');
+            // return res.redirect('/trending');
+            res.status(200).json({ token, redirect: '/trending' });;
+            
         } else {
-            res.redirect('/login');
+            res.status(400).json({ redirect: '/login' });
         }
-    }
-    catch (err) {
+    } catch (err) {
         return next(
             createErr({
             method: 'userLogin',
             type: 'login process',
             err
-        }
-        ))
+        }))
     }
 };
 
@@ -55,13 +66,13 @@ authenticationController.userSignup = async (req, res, next) => {
         const checkUserQuery = 'SELECT * FROM users WHERE username = $1';
         const checkUserResult = await db.query(checkUserQuery, [username]);
         if (checkUserResult.rows.length > 0) {
-            return res.redirect('/login');
+            res.status(400).json({ redirect: '/login' });
         }
 
         const insertUserQuery = 'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id';
-        const insertUserResult = await db.query(insertUserQuery, [username, hashedPassword]);
+        await db.query(insertUserQuery, [username, hashedPassword]);
 
-        return res.redirect('/login');
+        res.status(200).json({ redirect: '/login' });;
     }
     catch (err) {
         return next(
@@ -75,4 +86,7 @@ authenticationController.userSignup = async (req, res, next) => {
 };
 
 
-module.exports = authenticationController;
+module.exports = {
+    authenticationController,
+    secretKey,
+  };

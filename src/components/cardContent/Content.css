@@ -1,0 +1,19 @@
+/* .content-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+} */
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  padding: 5px;
+  margin: 5px 0;
+  background-color: #64485c;
+  border-radius: 10px;
+  position: relative;
+  color: rgba(201, 193, 193, 0.932);
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}

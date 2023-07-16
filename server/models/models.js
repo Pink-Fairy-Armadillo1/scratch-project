@@ -5,10 +5,6 @@ const pool = new Pool ({
     connectionString: PG_URI,
 });
 
-//test query
-
-  
-
 pool.query('SELECT 1')
     .then(() => {
         console.log('Database connected successfully');
