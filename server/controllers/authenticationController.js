@@ -25,6 +25,7 @@ authenticationController.userLogin = async (req, res, next) => {
         //check if user exists
         if (checkUserResult.rows.length === 0) {
             res.status(400).json({ redirect: '/signup' });;
+            return;
         };
         const user = checkUserResult.rows[0];
         //compare input password with stored hashed password 
@@ -61,7 +62,7 @@ authenticationController.userSignup = async (req, res, next) => {
         }
 
         const insertUserQuery = 'INSERT INTO users (username, password) VALUES ($1, $2) RETURNING id';
-        const insertUserResult = await db.query(insertUserQuery, [username, hashedPassword]);
+        await db.query(insertUserQuery, [username, hashedPassword]);
 
         res.status(200).json({ redirect: '/login' });;
     }

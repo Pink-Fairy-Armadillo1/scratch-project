@@ -7,61 +7,64 @@ import SimpleBottomNavigation from '../NavBar/NavBar';
 import SignUp from '../SignUp/SignUp'
 
 
-// const routes = [
-//   {
-//     path: '/',
-//     element: <Login />
-//   },
-//   {
-//     path: '/trending',
-//     element: <Trending />
-//   },
-//   {
-//     path: '/signup',
-//     element: <SignUp/>
-//   },
-//   // {
-//   //   path: '/login',
-//   //   element: <Login/>
-//   // }
-// ];
+const routes = [
+  {
+    path: '/',
+    element: <Login />
+  },
+  {
+    path: '/trending',
+    element: <Trending />
+  },
+  {
+    path: '/signup',
+    element: <SignUp/>
+  },
+  {
+    path: '/login',
+    element: <Login/>
+  }
+];
 
 
 const App = () => {
-  // const location = useLocation();
+  const location = useLocation();
 
-  // // , '/signup'
-  // const hiddenPaths = ['/'];
+  // , '/signup'
+  const hiddenPaths = ['/', '/signup', '/login'];
 
-  // const isHidden = hiddenPaths.includes(location.pathname);
+  const isHidden = hiddenPaths.includes(location.pathname);
 
-  // const routing = useRoutes(routes);
+  const routing = useRoutes(routes);
 
   return (
-    <BrowserRouter>
-    {/* <Header /> */}
-    <div className="app">
-      <Routes>
-        <Route path='/' element={<Login />}/>
-        <Route path='/signup' element={<SignUp />}/>
-
-        {/* <Route path='/' element={<SignUp/>}/> */}
-        {/* <Route path='/Genre' element={<Genre />}/>
-        <Route path='/Search' element={<Search />}/>  */}
-        <Route path='/trending' element={<Trending />}/>
-        
-      </Routes>
-      {/* {!isHidden && <SimpleBottomNavigation />} */}
-     </div>
-     </ BrowserRouter>
- 
+    // <BrowserRouter>
+    // {/* <Header /> */}
     // <div className="app">
-    //    <Routes> 
-    //     <Route path="/" element={<Login />} />
-    //     <Route path="/trending" element={<Trending />} />
+    //   <Routes>
+    //      <Route path='/' element={<Login />}/>
+    //     <Route path='/signup' element={<SignUp />}/> 
+    //     <Route path='/login' element={<Login />}/>
+    //     {/* <Route path='/' element={<SignUp/>}/> */}
+    //     {/* <Route path='/Genre' element={<Genre />}/>
+    //     <Route path='/Search' element={<Search />}/>  */}
+    //     <Route path='/trending' element={<Trending />}/>
+        
     //   </Routes>
-    //   {!isHidden && <SimpleBottomNavigation />} 
-    // </div>
+    //   {/* {!isHidden && <SimpleBottomNavigation />} */}
+    //   <SimpleBottomNavigation />
+    //  </div>
+    //  </ BrowserRouter>
+ 
+    <div className="app">
+       <Routes> 
+        <Route path="/" element={<Login />} />
+        <Route path="/trending" element={<Trending />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+      {!isHidden && <SimpleBottomNavigation />} 
+    </div>
  
   )
 };
