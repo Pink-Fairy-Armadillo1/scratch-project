@@ -21,7 +21,7 @@ const Search = () => {
 
   useEffect(() => {
     fetchSearch();
-  }, [page]);
+  }, [page, selectedGenres]);
 
   const handleSearch = () => {
     setPage(1);

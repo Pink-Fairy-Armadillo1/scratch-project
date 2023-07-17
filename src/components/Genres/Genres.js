@@ -5,19 +5,27 @@ import './Genres.css'
 const Genres = ({ selectedGenres, setSelectedGenres, genres, setGenres, setPage }) => {
   
   const handleAddGenre = (genre) => {
-    if (selectedGenres.find((selected) => selected.mal_id === genre.mal_id)) {
-      setSelectedGenres(selectedGenres.filter((selected) => selected.mal_id !== genre.mal_id));
-    } else {
+    // if (selectedGenres.find((selected) => selected.mal_id === genre.mal_id)) {
+    //   setSelectedGenres(selectedGenres.filter((selected) => selected.mal_id !== genre.mal_id));
+    // } else {
       setSelectedGenres([...selectedGenres, genre]);
-    }
+      setGenres(genres.filter((g) => g.mal_id !== genre.id))
+    // }
     setPage(1);
   };
 
   const handleRemoveGenre = (genre) => {
+
     // setSelectedGenres(selectedGenres.filter((selected) => selected.mal_id !== genre.mal_id));
-    // setGenres((prevGenres) => [...prevGenres.filter((g) => g.mal_id !== genre.mal_id)]);
-    // setPage(1);
-    setSelectedGenres(selectedGenres.filter((selected) => selected.mal_id !== genre.mal_id));
+    // setGenres((prevGenres) => {
+    //   if (!prevGenres.some((g) => g.mal_id === genre.mal_id)) {
+    //     return [...prevGenres, genre];
+    //   }
+    //   return prevGenres;
+    // });
+    setSelectedGenres(
+      selectedGenres.filter((selected) => selected.mal_id !== genre.mal_id)
+    );
     // setGenres([...genres, genre]);
     setGenres((prevGenres) => {
       if (!prevGenres.some((g) => g.mal_id === genre.mal_id)) {
@@ -31,9 +39,7 @@ const Genres = ({ selectedGenres, setSelectedGenres, genres, setGenres, setPage 
   const fetchGenres = async () => {
     try {
       const { data } = await axios.get(`https://api.jikan.moe/v4/genres/anime`);
-      // console.log('genres: ', data)
       setGenres(data.data);
-      // console.log('genres: ', data)
 
     } catch (err) {
       console.log(err);
@@ -44,12 +50,14 @@ const Genres = ({ selectedGenres, setSelectedGenres, genres, setGenres, setPage 
     fetchGenres();
   }, []);
 
+  const filteredGenres = genres.filter((genre) => !selectedGenres.some((selected) => selected.mal_id === genre.mal_id));
+
 // console.log('genres from genres: ', genres)
   return (
     <div style={{ padding: "6px 0" }} className='chips'>
       {selectedGenres.map((genre) => (
         <Chip
-          style={{ margin: 10, backgroundColor: '#83677b', color: 'white'}}
+          style={{ margin: 10, backgroundColor: '#ff00e9', color: 'white'}}
           color="primary"
           key={`s-${genre.mal_id}`}
           label={genre.name}
@@ -58,9 +66,9 @@ const Genres = ({ selectedGenres, setSelectedGenres, genres, setGenres, setPage 
           onClick={() => handleRemoveGenre(genre)}
         />
       ))}
-      {genres.map((genre) => (
+      {filteredGenres.map((genre) => (
         <Chip
-          style={{ margin: 3, backgroundColor: '#adadad', }}
+          style={{ margin: 3, backgroundColor: 'white', }}
           key={`a-${genre.mal_id}`}
           label={genre.name}
           size="large"

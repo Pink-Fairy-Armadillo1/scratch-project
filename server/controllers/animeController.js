@@ -71,7 +71,7 @@ animeController.getFavorites = async (req, res, next) => {
     const user_id = decodedToken.userId;
     
     const selectFavoritesQuery = `
-    SELECT f.mal_id, f.item_title, f.item_image, 
+    SELECT f.mal_id, f.item_title, f.item_image
     FROM favorites AS f
     JOIN users_favorites AS uf ON f.id = uf.favorite_id
     WHERE uf.user_id = $1

@@ -10,7 +10,7 @@
   background-color: #f6f6f6;
   border-radius: 10px;
   position: relative;
-  color: rgba(112, 105, 105, 0.932);
+  color: rgb(54, 53, 53);
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   border: 2px solid rgb(5, 5, 5);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -57,4 +57,8 @@
   bottom: 10px;
   left: 10px;
 
+}
+
+.trending {
+  margin-bottom: 20px;
 }

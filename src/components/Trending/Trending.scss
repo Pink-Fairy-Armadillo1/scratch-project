@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-
+  
 }
 h1 {
   font-size: 70px;
@@ -27,6 +27,6 @@ $ending: rgb(255, 255, 255);
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 65px;
+  margin-bottom: 75px;
   @include text-gradient($secondary, $tertiary, $ending);
 }
