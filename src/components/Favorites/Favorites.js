@@ -34,8 +34,6 @@ const Favorites = () => {
             display: 'flex',
             flexWrap: 'wrap',
             flexDirection: 'column',
-
-
           }}
         />
       ))}

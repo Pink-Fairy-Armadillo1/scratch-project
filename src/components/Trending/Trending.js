@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Content from '../cardContent/Content.js';
 import './Trending.css'
-import CustomPagination from './Pagination.js';
+import Pagination from './Pagination.js';
 
 const Trending = () => {
 
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
-
+  const [numOfPages, setNumOfPages] = useState(0);
   
   useEffect(() => {
     fetchTrending();
@@ -20,6 +20,7 @@ const Trending = () => {
       // what does data look like from backend
       // console.log('data: ', data)
       setContent(data.data);
+      setNumOfPages(data.pagination.last_visible_page);
     } catch (err) {
       console.log(err);
     }
@@ -40,7 +41,9 @@ const Trending = () => {
           />
         })}
       </div>
-        <CustomPagination setPage={setPage} />
+      {numOfPages > 1 && (
+      <Pagination setPage={setPage} numOfPages={numOfPages} />
+    )}
     </div>
   );
 }

@@ -42,7 +42,8 @@ const App = () => {
   const location = useLocation();
 
   // , '/signup'
-  const hiddenPaths = ['/', '/signup', '/login'];
+  // '/',
+  const hiddenPaths = [ '/signup', '/login'];
 
   const isHidden = hiddenPaths.includes(location.pathname);
 

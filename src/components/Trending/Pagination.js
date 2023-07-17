@@ -2,7 +2,7 @@ import React from 'react';
 import Pagination from "@mui/material/Pagination";
 
 
-export default function CustomPagination({ setPage, numOfPages = 10 }) {
+export default function CustomPagination({ setPage, numOfPages = 5 }) {
   // Scroll to top when page changes
   const handlePageChange = (page) => {
     setPage(page);
@@ -10,14 +10,28 @@ export default function CustomPagination({ setPage, numOfPages = 10 }) {
   };
 
   return (
-    <div style={{ width: "100%", display: "flex", justifyContent: "center", marginTop: 10 }}>
+    <div style={{ 
+      width: "100%", 
+      display: "flex", 
+      justifyContent: "center", 
+      marginTop: 20 
+      }}>
         <Pagination
           onChange={(e) => handlePageChange(e.target.textContent)}
           count={numOfPages}
           shape="rounded"
           size="large"
           color="secondary"
-          variant="outlined"
+          variant="filled"
+          sx={{
+            "& .MuiPaginationItem-root": {
+              backgroundColor: "#2d313a", 
+              color: "black", 
+            },
+            "& .MuiPaginationItem-root.Mui-selected": {
+              backgroundColor: "#64485c", 
+            },
+          }}
         />
     </div>
   );

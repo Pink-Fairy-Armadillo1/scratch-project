@@ -6,21 +6,18 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import SearchIcon from '@mui/icons-material/Search';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import './NavBar.css'; 
-// import { makeStyles } from "@mui/styles";
-// import { styled } from "@mui/system";
+// import './NavBar.css'; 
+import { styled } from "@mui/system";
 
 
-
-// const useStyles = makeStyles({
-//   root: {
-//     width: "100%",
-//     position: "fixed",
-//     bottom: 0,
-//     backgroundColor: "#2d313a",
-//     zIndex: 100,
-//   },
-// });
+const StyledBottomNavigation = styled(BottomNavigation)({
+  width: "100%",
+  position: "fixed",
+  bottom: 0,
+  backgroundColor: "#64485c",
+  zIndex: 100,
+  opacity: 0.8,
+});
 
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
@@ -32,13 +29,15 @@ export default function SimpleBottomNavigation() {
     navigate(path);
   }
   return (
-    // <Box >
-      <BottomNavigation
-        // className={classes.root}
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
+    // <Box sx={{
+
+    // }}>
+    <StyledBottomNavigation
+      // className={classes.root}  
+      showLabels
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue);
         }}
       >
         <BottomNavigationAction
@@ -56,7 +55,7 @@ export default function SimpleBottomNavigation() {
          icon={<FavoriteIcon />}
          onClick={() => handleNavigation('/favorites')}
           />
-      </BottomNavigation>
-    // </Box>
+      </StyledBottomNavigation>
+    //  </Box>
   )
 }
