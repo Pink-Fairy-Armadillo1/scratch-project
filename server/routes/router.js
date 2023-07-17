@@ -13,7 +13,6 @@ router.post('/signup', authenticationController.userSignup);
 
 router.post('/addFavorites', animeController.addFavorite);
 
-
 router.get('/favorites', animeController.getFavorites);
 
 

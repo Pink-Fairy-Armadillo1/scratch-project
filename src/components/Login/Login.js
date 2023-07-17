@@ -24,7 +24,7 @@ const Login = () => {
 
 
     const handleLogin = async () => {
-        console.log('enteringHandleLogin')
+        // console.log('enteringHandleLogin')
         try {
             const res = await fetch('/login', { 
                 method: 'POST',
@@ -41,7 +41,7 @@ const Login = () => {
                 // console.log(data);
                 // const { redirectUrl } = data;
                 // console.log('data: ', data)
-                console.log('redirectUrl:', redirectUrl);
+                // console.log('redirectUrl:', redirectUrl);
                 //store authentication token in a cookie
                 Cookies.set('authToken', token, { expires: 1 / 24 });
                 navigate(redirectUrl); 

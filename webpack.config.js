@@ -37,6 +37,14 @@ module.exports = {
         exclude: /node_modules/,
         use: ['url-loader', 'file-loader'],
       },
+      {
+        test: /\.mp4$/,
+        exclude: /node_modules/,
+        use: ['url-loader'],
+      },
+      // {
+      //   test: 
+      // }
 
     ]
    },

@@ -7,31 +7,37 @@ const Favorites = () => {
     
   const [favorites, setFavorites] = useState([]);
 
+
+  const fetchFavorites = async () => {
+    try {
+      const res = await fetch('/favorites', {
+        credentials: 'include',
+      });
+      const data = await res.json();
+      console.log('data in favorites:', data)
+      setFavorites(data);
+    } catch(err) {
+      console.log('Fetch favorites error:', err);
+    }
+  };
+
+
   useEffect(() => {
-    const fetchFavorites = async () => {
-      try {
-        const { data } = await axios.get('/favorites');
-        setFavorites(data);
-      } catch(err) {
-        console.log(err);
-      }
-    };
     fetchFavorites();
   }, []);
 
-
-
+console.log('favorites: ', favorites);
 
   return (
     <div>
-      {favorites.map((a) => {
+      {favorites.map((a) => (
         <Content
-          key={a.anime.mal_id}
-          id={a.mal_id}
-          poster={a.image}
-          title={a.title}
+          key={a.mal_id}
+          mal_id={a.mal_id} 
+          poster={a.item_image}
+          title={a.item_title}
         />
-      })}
+      ))}
     </div>
   )
 }

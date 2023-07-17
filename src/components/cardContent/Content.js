@@ -22,11 +22,9 @@ const Content = ({ title, poster, mal_id }) => {
 
 
   const handleFavorite = async () => {
-    // setFavorite(prevFavs => [...prevFavs, newFavorite])
-    // console.log(setFavorite);
-    // setLikeColor(theme.palette.primary)
     try {
       console.log('click');
+      console.log('mal_id: ', mal_id);
       const res = await fetch('/addFavorites', {
         method: 'POST',
         credentials: 'include',
