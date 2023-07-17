@@ -8,6 +8,8 @@ import SignUp from '../SignUp/SignUp';
 import Search from '../Search/Search';
 import Favorites from '../Favorites/Favorites';
 import './App.css'
+import Container from '@mui/material/Container';
+
 
 const routes = [
   {
@@ -43,13 +45,35 @@ const App = () => {
 
   // , '/signup'
   // '/',
-  const hiddenPaths = [ '/signup', '/login'];
+  const hiddenPaths = ['/', '/signup', '/login'];
 
   const isHidden = hiddenPaths.includes(location.pathname);
 
   const routing = useRoutes(routes);
 
   return (
+ 
+    <div className="app">
+       <Container>
+       <Routes> 
+        <Route path="/" element={<Login />} />
+        <Route path="/trending" element={<Trending />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/search" element={<Search />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
+      </Container>
+      {!isHidden && <SimpleBottomNavigation />} 
+    </div>
+ 
+  )
+};
+
+
+export default App;
+
+
     // <BrowserRouter>
     // {/* <Header /> */}
     // <div className="app">
@@ -67,22 +91,3 @@ const App = () => {
     //   <SimpleBottomNavigation />
     //  </div>
     //  </ BrowserRouter>
- 
-    <div className="app">
-       <Routes> 
-        <Route path="/" element={<Login />} />
-        <Route path="/trending" element={<Trending />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/favorites" element={<Favorites />} />
-      </Routes>
-      {!isHidden && <SimpleBottomNavigation />} 
-    </div>
- 
-  )
-};
-
-
-
-export default App

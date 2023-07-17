@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import Content from '../cardContent/Content.js';
-import './Trending.css'
+import './Trending.scss'
 import Pagination from './Pagination.js';
 
 const Trending = () => {
@@ -30,7 +30,7 @@ const Trending = () => {
 
   return (
     <div className="trending-container" >
-      <h1>Trending</h1>
+      <h1>All Time Top Rated</h1>
       <div className="trending">
         {content.map((a) => {
           return <Content
@@ -38,12 +38,10 @@ const Trending = () => {
           mal_id={a.mal_id}
           poster={a.images.jpg.image_url}
           title={a.titles[0].title}
+          score={a.score}
           />
         })}
       </div>
-      {numOfPages > 1 && (
-      <Pagination setPage={setPage} numOfPages={numOfPages} />
-    )}
     </div>
   );
 }

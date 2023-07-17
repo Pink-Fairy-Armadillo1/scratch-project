@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import logo from './assets/pinkarmadillo';
 import { Grid, Paper, TextField, Button, Avatar } from '@mui/material'
 import { useNavigate } from 'react-router-dom';
-
+import './SignUp.scss'
 
 const SignUp = () => {
 
@@ -51,6 +51,9 @@ const paperStyle={padding: 20, heigth: '70vh', width: 280, margin: "20px auto"}
 
   return (
     <div>
+        <div className='signup'>
+            <h1>Sign Up</h1>
+        </div>
         <Grid>
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>

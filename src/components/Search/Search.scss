@@ -15,15 +15,15 @@
 }
 
 .search-input {
-  height: 40px;
+  height: 55px;
   width: 300px;
-  background-color: pink;
+  background-color: rgb(247, 239, 241);
   /* opacity: 0.8; */
   border-radius: 10px;
 }
 
 .search-icon {
-  color: pink;
+  color: #ff00e9;
   /* opacity: 0.9; */
 }
 
@@ -54,5 +54,26 @@
 .search-button {
   height: 40px;
   /* Set the same height as the input box */
-  background-color: black;
+  background-color: rgb(255, 254, 254);
 }
+$primary: rgb(21, 19, 87);
+$secondary: rgb(99, 68, 183);
+$tertiary: rgb(194, 75, 245);
+$ending: rgb(255, 255, 255);
+
+@mixin text-gradient($start, $middle1, $middle2, $end) {
+  background: linear-gradient(to right, $start, $middle1, $middle2, $end);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.search-title{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 65px;
+  @include text-gradient($primary, $secondary, $tertiary, $ending);
+}
+

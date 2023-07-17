@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import { Grid, Paper, TextField, Button, Typography, Avatar } from '@mui/material'
-// import LockIcon from '@mui/icons-material/Lock';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useNavigate, Link } from 'react-router-dom';
-// import axios from 'axios';
 import Cookies from 'js-cookie';
 import logo from './assets/pink-armadillo'
-// import vid1 from './assets/pinkpuffy2.js'
-
+import './Login.scss'
 const Login = () => {
 // console.log('hi')
     // const [btnClick, setBtnClick] = useState([])
@@ -76,6 +73,9 @@ const logoStyle= {margin: '10px 10px'}
   return (
     // <BrowserRouter>
     <div>
+        <div className='login'>
+            <h1>ANIMEVERSE</h1>
+        </div>
         <Grid>
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
@@ -112,7 +112,7 @@ const logoStyle= {margin: '10px 10px'}
                 <Button type='submit' color='primary' fullWidth variant='contained' style={btnStyle} onClick={handleLogin}>Sign In</Button> 
                 {/* {!isLoginPage && ( */}
                 <Typography>
-                     Do you have an account
+                     Do you have an account?
                      <Link href='/signup' to='/signup'> Sign Up </Link>
                 </Typography>  
                 {/* )} */}

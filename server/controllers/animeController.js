@@ -27,6 +27,7 @@ animeController.addFavorite = async (req, res, next) => {
     const user_id = decodedToken.userId;
 
     const { mal_id, title, image } = req.body;
+    //console.log('score:' , score)
     //check if item exists in favorites table
     const checkItemQuery = 'SELECT * FROM favorites WHERE mal_id = $1'
     const checkItemResult = await db.query(checkItemQuery, [mal_id]);
@@ -70,15 +71,14 @@ animeController.getFavorites = async (req, res, next) => {
     const user_id = decodedToken.userId;
     
     const selectFavoritesQuery = `
-    SELECT f.mal_id, f.item_title, f.item_image
+    SELECT f.mal_id, f.item_title, f.item_image, 
     FROM favorites AS f
     JOIN users_favorites AS uf ON f.id = uf.favorite_id
     WHERE uf.user_id = $1
     `;
-
     console.log('hi from get favorites')
     const selectFavoritesResult = await db.query(selectFavoritesQuery, [user_id]);
-    // console.log('data: ' , selectFavoritesResult.rows);
+    //console.log('data: ' , selectFavoritesResult.rows);
     //res.locals.favorites = selectFavoritesResult;
     res.status(200).json(selectFavoritesResult.rows);
     // res.status(200).json([{'hi': 'hello'}]);
@@ -98,6 +98,7 @@ animeController.getFavorites = async (req, res, next) => {
 
 animeController.checkFavorite = async (req, res, next) => {
   try {
+    console.log('checking favorite');
     const secretKey = 'a2ZthjPpKi79jLOk41jkUP4BduEsIqq3';
     const token = req.cookies.authToken;
 

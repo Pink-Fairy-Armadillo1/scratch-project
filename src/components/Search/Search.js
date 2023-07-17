@@ -4,7 +4,8 @@ import axios from 'axios';
 import SearchIcon from '@mui/icons-material/Search';
 import Content from '../cardContent/Content';
 import Pagination from '../Trending/Pagination';
-import './Search.css';
+import './Search.scss';
+import Genres from '../Genres/Genres';
 
 
 const Search = () => {
@@ -13,6 +14,10 @@ const Search = () => {
   const [page, setPage] = useState(1);
   const [numOfPages, setNumOfPages] = useState(0);
   const [content, setContent] = useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
+  const [genres, setGenres] = useState([]);
+  // const [favorite, setFavorite] = useState(false);
+
 
   useEffect(() => {
     fetchSearch();
@@ -26,11 +31,15 @@ const Search = () => {
 
   const fetchSearch = async () => {
     try {
+      // console.log('selectedGenres: ', selectedGenres);
+      const genreNumbers = selectedGenres.map((genre) => genre.mal_id).join(",");
+      
       const { data } = await axios.get(
-        `https://api.jikan.moe/v4/anime?q=${searchText}&page=${page}`
+        // `https://api.jikan.moe/v4/anime?q=${searchText}&page=${page}`
+        `https://api.jikan.moe/v4/anime?q=${searchText}&page=${page}&genres=${genreNumbers}`
         
       )
-      console.log('data from search: ', data);
+      // console.log('data from search: ', data);
       setContent(data.data);
       setNumOfPages(data.pagination.last_visible_page);
 
@@ -41,9 +50,11 @@ const Search = () => {
     // console.log(data);
   };
 
-
   return (
     <div className='search-container'>
+      <div className='search-title'>
+        <h1>Search</h1>
+      </div>
       <div className='search-bar'>
       <TextField
         id="search-input"
@@ -72,13 +83,22 @@ const Search = () => {
         <SearchIcon className="search-icon" />
       </Button>
       </div>
+      <Genres
+        selectedGenres={selectedGenres}
+        setSelectedGenres={setSelectedGenres}
+        genres={genres}
+        setGenres={setGenres}
+        setPage={setPage}
+      />
     <div className="trending">
       {content.map((a) => (
         <Content
-          key={a.mal_id}
-          id={a.mal_id}
-          poster={a.images.jpg.image_url}
-          title={a.titles[0].title}
+        key={a.mal_id}
+        mal_id={a.mal_id}
+        poster={a.images.jpg.image_url}
+        title={a.titles[0].title}
+        score={a.score}
+          // onClick={a.handleFavorite}
         />
       ))}
       {content.length === 0 && <h2>No Anime Found</h2>}

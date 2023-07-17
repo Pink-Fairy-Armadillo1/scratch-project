@@ -5,6 +5,32 @@ html{
     align-items: center;
     background-Image: url("https://images.fineartamerica.com/images/artworkimages/medium/2/retro-vintage-80s-or-90s-geometric-gorbash-varvara.jpg");
   background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-family: 'Victor Mono', monospace;
+  
 }
+
+body{
+  width: 100%;
+}
+/* html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-image: url("https://images.fineartamerica.com/images/artworkimages/medium/2/retro-vintage-80s-or-90s-geometric-gorbash-varvara.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+} */
+
+/* https://img.freepik.com/free-vector/set-torii-gates-water_52683-44986.jpg */

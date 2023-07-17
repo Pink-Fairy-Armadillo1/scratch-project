@@ -25,11 +25,11 @@ export default function CustomPagination({ setPage, numOfPages = 5 }) {
           variant="filled"
           sx={{
             "& .MuiPaginationItem-root": {
-              backgroundColor: "#2d313a", 
-              color: "black", 
+              backgroundColor: "#2d3a93", 
+              color: "white", 
             },
             "& .MuiPaginationItem-root.Mui-selected": {
-              backgroundColor: "#64485c", 
+              backgroundColor: "#ff00e9", 
             },
           }}
         />

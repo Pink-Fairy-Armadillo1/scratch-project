@@ -30,7 +30,7 @@ module.exports = {
       {
         test: /.(css|scss)$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test:/\.(png|jpe?g|gif)$/i,
@@ -42,10 +42,6 @@ module.exports = {
         exclude: /node_modules/,
         use: ['url-loader'],
       },
-      // {
-      //   test: 
-      // }
-
     ]
    },
    devServer:{

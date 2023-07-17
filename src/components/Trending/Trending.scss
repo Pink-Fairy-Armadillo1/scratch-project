@@ -1,0 +1,32 @@
+.trending {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+}
+h1 {
+  font-size: 70px;
+}
+
+// $primary: rgb(21, 19, 87);
+$secondary: rgb(99, 68, 183);
+$tertiary: rgb(194, 75, 245);
+$ending: rgb(255, 255, 255);
+
+@mixin text-gradient($start, $middle1, $end) {
+  background: linear-gradient(to right, $start, $middle1, $end);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+ .trending-container h1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 65px;
+  @include text-gradient($secondary, $tertiary, $ending);
+}
