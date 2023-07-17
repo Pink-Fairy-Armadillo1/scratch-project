@@ -1,0 +1,28 @@
+.favContent{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 5px;
+}
+
+$primary: rgb(21, 19, 87);
+$secondary: rgb(99, 68, 183);
+$tertiary: rgb(194, 75, 245);
+$ending: rgb(255, 255, 255);
+
+@mixin text-gradient($start, $middle1, $middle2, $end) {
+  background: linear-gradient(to right, $start, $middle1, $middle2, $end);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+ .favContainer h1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 65px;
+  @include text-gradient($primary, $secondary, $tertiary, $ending);
+}
