@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-// import Box from '@mui/material/Box';
-// import TextField from '@mui/material/TextField';
-// import { useFormControl } from '@mui/material/FormControl';
-
+import logo from './assets/pinkarmadillo';
 import { Grid, Paper, TextField, Button, Avatar } from '@mui/material'
-
-import LockIcon from '@mui/icons-material/Lock';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -14,8 +9,7 @@ const SignUp = () => {
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    // const location = useLocation();
-    // const redirectUrl = location.pathname;
+
     const handleSignUp = async () =>{
     try{
         const res = await fetch('/signup',
@@ -50,16 +44,17 @@ const SignUp = () => {
 }
 
     
-const paperStyle={padding: 20, heigth: '70vh', width: 280, margin: "20px auto"}
-const avatarStyle={backgroundColor: 'green'}
+
 const btnStyle={margin: '8px 0'}
+const logoStyle= {margin: '10px 10px'}
+const paperStyle={padding: 20, heigth: '70vh', width: 280, margin: "20px auto"}
+
   return (
     <div>
         <Grid>
             <Paper elevation={10} style={paperStyle}>
                 <Grid align='center'>
-                    <Avatar style={avatarStyle}>
-                        <LockIcon/>
+                    <Avatar src={logo} style={logoStyle}>
                         <h1>Sign Up</h1>
                     </Avatar>
                 </Grid>

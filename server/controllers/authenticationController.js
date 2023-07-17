@@ -86,9 +86,4 @@ authenticationController.userSignup = async (req, res, next) => {
 };
 
 
-// module.exports = {
-//     authenticationController,
-//     secretKey,
-//   };
-
 module.exports = authenticationController;

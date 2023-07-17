@@ -7,6 +7,7 @@ import { useNavigate, Link } from 'react-router-dom';
 // import axios from 'axios';
 import Cookies from 'js-cookie';
 import logo from './assets/pink-armadillo'
+// import vid1 from './assets/pinkpuffy2.js'
 
 const Login = () => {
 // console.log('hi')
@@ -65,8 +66,7 @@ const Login = () => {
     }
 
     
-const paperStyle={padding: 20, heigth: '70vh', width: 280, margin: "20px auto"}
-// const avatarStyle={backgroundColor: 'green'}
+const paperStyle={padding: 20, heigth: '70vh', width: 280, margin: "20px auto", alignItems:'center', justifyContent:'center', position: 'relative'}
 const btnStyle={margin: '8px 0'}
 const logoStyle= {margin: '10px 10px'}
 

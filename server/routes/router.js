@@ -15,6 +15,10 @@ router.post('/addFavorites', animeController.addFavorite);
 
 router.get('/favorites', animeController.getFavorites);
 
+router.post('/checkFavorite', animeController.checkFavorite);
+
+router.post('/deleteFavorites', animeController.deleteFavorite);
+
 
 
 

@@ -7,6 +7,7 @@ import SimpleBottomNavigation from '../NavBar/NavBar';
 import SignUp from '../SignUp/SignUp';
 import Search from '../Search/Search';
 import Favorites from '../Favorites/Favorites';
+import './App.css'
 
 const routes = [
   {
